@@ -1,0 +1,64 @@
+<!DOCTYPE html >
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+
+<title>HTML测试专用</title>
+<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-12 text-center"><h1>HTML测试专用</h1></div>
+ 	    </div>
+ 	    <div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-12">
+  			工具介绍：本工具可以在线可视化编辑HTML代码，并且可以在线运行测试。请在正确的位置填写好网页代码，点击下边的【运行】按钮即可在线测试运行代码。
+  			</div>
+ 	    </div>
+ 	    <div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-12">
+  				<textarea class="form-control" rows="15" id="content">
+ &lt;!---------- 在下一行填写代码，此行为注释 ----------&gt;
+
+  				</textarea>
+  			</div>
+ 	    </div>
+ 	    <div class="row">
+  			<div class="col-xs-12 col-sm-12 col-md-12">
+ 	    		<button type="button" class="btn btn-success btn-lg" onclick="runCode('content')">运行代码</button>
+  			</div>
+ 	    </div>
+
+	</div>
+ <script type="text/javascript">
+                    var lang = new Array();
+                    var userAgent = navigator.userAgent.toLowerCase();
+                    var is_opera = userAgent.indexOf('opera') != -1 && opera.version();
+                    var is_moz = (navigator.product == 'Gecko') && userAgent.substr(userAgent.indexOf('firefox') + 8, 3);
+                    var is_ie = (userAgent.indexOf('msie') != -1 && !is_opera) && userAgent.substr(userAgent.indexOf('msie') + 5, 3);
+
+                    Array.prototype.push = function(value) {
+                        this[this.length] = value;
+                        return this.length;
+                    }
+                    function $(objname) {
+                        return document.getElementById(objname);
+                    }
+                    function runCode(objname) {
+                        var winname = window.open('', "_blank", '');
+                        var obj = $(objname);
+                        winname.document.open('text/html', 'replace');
+                        winname.opener = null // 防止代码对论谈页面修改
+                        winname.document.write(obj.value);
+                        winname.document.close();
+                    }
+                </script>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
+</html>
